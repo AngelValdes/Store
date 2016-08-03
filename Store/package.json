@@ -1,0 +1,13 @@
+{
+  "name": "store",
+  "version": "0.0.0",
+  "description": "Store",
+  "main": "server.js",
+  "author": {
+    "name": "AngelValdes"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
