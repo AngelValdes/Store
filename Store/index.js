@@ -1,10 +1,10 @@
 ﻿(function (controllers) {
     "use strict";
-    var usersController = require("./api/usersController");
-    var productsController = require("./api/productsController");
-
+    var appsController = require("./appsController");
+    var usersController = require("./usersController");
+    
     controllers.init = function (app) {
-        usersController.init(app);
-        productsController.init(app);
+        appsController.init(app);
+        usersController.init(app);       
     };
 })(module.exports);

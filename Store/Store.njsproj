@@ -30,8 +30,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="appsController.js" />
     <Compile Include="index.js" />
     <Compile Include="server.js" />
+    <Compile Include="usersController.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
