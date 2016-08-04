@@ -43,74 +43,76 @@
 
         //api data routes CRUD operations		
         //Read all
-        app.get("/api/v1/apps", function (request, response) {
-            response.set("Content-Type", "application/json");
-            response.send(apps);
+        app.get("/api/v1/apps", function (request, response) { //route
+            response.set("Content-Type", "application/json"); //set data format to return
+            response.send(apps); //send data
         });
         //Read by id
-        app.get("/api/v1/apps/:id", function (request, response) {
-            var id = request.params.id;
-            response.set("Content-Type", "application/json");
+        app.get("/api/v1/apps/:id", function (request, response) { //route
+            var id = request.params.id; //get id value from route params
+            response.set("Content-Type", "application/json"); //set data format to return
             var index = -1;
-            for (var i = 0; i < apps.length; i += 1) { //i++
+            for (var i = 0; i < apps.length; i += 1) { //i++ //looking for member with id
                 if (apps[i].id === parseInt(id)) {
                     index = i;
                     break;
                 };
             }
-            if (index === -1) {
-                response.send([404, null, null]);
+            if (index === -1) { //if index still -1, member was not found
+                response.send([404, null, null]); //return not found
             } else {
-                response.send(apps[index]);
+                response.send(apps[index]); //return app
             }
 
         });
         //Create
-        app.post("/api/v1/apps", function (request, response) {
-            var title = request.body.title;
-            var description = request.body.description;
+        app.post("/api/v1/apps", function (request, response) { //route
+            var title = request.body.title; //get values from body in request
+            var description = request.body.description; //get values from body in request
+            //compose new item
             var newApp = { "id": apps.length + 1, "title": title, "description": description, "artAssets": [], "releaseDate": "2016 - 09 - 03T22: 29:20.000Z", "createdAt": "2016 - 08 - 03T22: 29:20.000Z", "updatedAt": "2016-08-03T22:29:20.000Z", "user": {}}
-            apps.push(newApp);
-            response.send([201, app, null]);
+            apps.push(newApp); //add item to list
+            response.send([201, app, null]); //return created
         });
         //update
-        app.put("/api/v1/apps/:id", function (request, response) {
-            var id = request.params.id;
-            var title = request.body.title;
-            var description = request.body.description;
-            response.set("Content-Type", "application/json");
+        app.put("/api/v1/apps/:id", function (request, response) { //route
+            var id = request.params.id; //get id value from route params
+            //only updating some of the properties but you can add more ...
+            var title = request.body.title; //get values from body in request
+            var description = request.body.description; //get values from body in request
+            response.set("Content-Type", "application/json"); //set data format to return
             var index = -1;
-            for (var i = 0; i < apps.length; i += 1) { //i++
+            for (var i = 0; i < apps.length; i += 1) { //i++ //looking for member with id
                 if (apps[i].id === parseInt(id)) {
                     index = i;
                     break;
                 };
             }
-            if (index === -1) {
-                response.send([404, null, null]);
+            if (index === -1) { //if index still -1, member was not found
+                response.send([404, null, null]); //return not found
             } else {
-                apps[index].title = title;
-                apps[index].description = description;
-                response.send([302, null, null]);
+                apps[index].title = title; //update values
+                apps[index].description = description; //update values
+                response.send([302, null, null]); //return modified
             }
 
         });
         //Delete
-        app.delete("/api/v1/apps/:id", function (request, response) {
-            var id = request.params.id;
-            response.set("Content-Type", "application/json");
+        app.delete("/api/v1/apps/:id", function (request, response) { //route
+            var id = request.params.id; //get id value from route params
+            response.set("Content-Type", "application/json"); //set data format to return
             var index = -1;
-            for (var i = 0; i < apps.length; i += 1) { //i++
+            for (var i = 0; i < apps.length; i += 1) { //i++ //looking for member with id
                 if (apps[i].id === parseInt(id)) {
                     index = i;
                     break;
                 };
             }
-            if (index === -1) {
-                response.send([404, null, null]);
+            if (index === -1) { //if index still -1, member was not found
+                response.send([404, null, null]); //return not found
             } else {
-                apps.splice(index,1);
-                response.send([302, null, null]);
+                apps.splice(index,1); //remove item from list
+                response.send([302, null, null]); //return deleted
             }
         });
 

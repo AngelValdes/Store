@@ -6,8 +6,15 @@
 # GET /api/v1/users/:id -> Display Single User Info
 
 # example return data from endpoints
+
+# user example data 
 {
-  "id": "0032c47b-4a7b-4232-9cc3-6af718244ea8",
+  "id": 1,
+  "name": "Maria",
+}
+# application example data
+{
+  "id": 1,
   "title": "Best App Ever",
   "description": "A fast paced side scrolling shooter",
   "artAssets": [
