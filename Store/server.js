@@ -8,6 +8,16 @@ var App = Express();
 var Controllers = require("./index");
 Controllers.init(App);
 
+//initialize model, test connection, define initial model, sync model
+var Model = require("./model.js");
+Model.testConnection();
+Model.define();
+Model.sync();
+
 //initialize server and listen to port
 var Server = Http.createServer(App);
 Server.listen(3000);
+
+
+
+
