@@ -116,7 +116,7 @@
 		]
 }
 ```
-## Upate Application Info 
+## Update Application Info 
 - PUT Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
 
 #### Request Body: 
@@ -136,7 +136,7 @@
 	userId: 1
 }
 ```
-## Upate User Info 
+## Update User Info 
 - PUT Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
 
 #### Request Body: 
@@ -149,5 +149,38 @@
 {
 	id: 1,
 	name: "maria UPDATED"
+}
+```
+## Insert new Application 
+- POST Route: http://localhost:3000/api/v1/applications 
+
+#### Request Body: 
+```javascript
+{"title":"Best App Ever NEW","description":"A fast paced side scrolling shooter","releaseDate":"2016-06-15T00:00:00.000Z","userId":1}
+```
+
+#### Response Data:
+```javascript
+{
+	title: "Best App Ever NEW",
+	description: "A fast paced side scrolling shooter",
+	releaseDate: "2016-06-15T00:00:00.000Z",
+	createdAt: "2016-08-09T18:35:15.000Z",
+	updatedAt: "2016-08-09T18:35:15.000Z",
+	userId: 1
+}
+```
+## Insert New User  
+- POST Route: http://localhost:3000/api/v1/users
+
+#### Request Body: 
+```javascript
+{"name":"maria NEW"}
+```
+
+#### Response Data:
+```javascript
+{
+	name: "maria NEW"
 }
 ```
