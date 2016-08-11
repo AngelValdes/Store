@@ -11,6 +11,8 @@ var Levels = [
     { level: 1, type: "warning", color: "yellow" },
     { level: 2, type: "error", color: "red" }
 ];
+//console colors
+var Colors = require('colors');
 
 //check for log file existance, if not exists, initialize it with date
 Fs.stat(Path, function (err, stat) {
@@ -33,7 +35,21 @@ module.exports = {
     debug: function(message, level) { 
         if (global.DEBUG === true) {
             //log to console and write to file
-            console.log(message);//display message on console
+            //display message on console in color
+            switch (Levels[level].color) {
+                case "blue":
+                    console.log(message.blue);
+                    break;
+                case "yellow":
+                    console.log(message.yellow);
+                    break;
+                case "red": 
+                    console.log(message.red);
+                    break;
+                default:
+                    console.log(message.blue);
+            }
+            
             Fs.appendFile(Path, "\n - " + "at: " + Datetime.toLocaleTimeString() + " " + Levels[level].type + "(" + Levels[level].color + "): " + message, function (err) {
                 if (err) {
                     console.log("Error appending to log: " + err);//if error appending, log to console
