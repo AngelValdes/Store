@@ -184,3 +184,17 @@
 	name: "maria NEW"
 }
 ```
+## Delete Application 
+- DELETE Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
+
+#### Response Data:
+```javascript
+[301,null,null]
+```
+## Delete User  
+- DELETE Route: http://localhost:3000/api/v1/users/1
+
+#### Response Data:
+```javascript
+[301,null,null]
+```
