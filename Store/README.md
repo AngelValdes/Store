@@ -161,6 +161,7 @@ Content-Type: application/json
 ```
 ## Update User Info 
 - PUT Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
+
 #### Request Header: 
 ```
 Content-Type: application/json
@@ -183,6 +184,7 @@ Content-Type: application/json
 ```
 ## Insert new Application 
 - POST Route: http://localhost:3000/api/v1/applications 
+
 #### Request Header: 
 ```
 Content-Type: application/json
@@ -209,6 +211,7 @@ Content-Type: application/json
 ```
 ## Insert New User  
 - POST Route: http://localhost:3000/api/v1/users
+
 #### Request Header: 
 ```
 Content-Type: application/json
