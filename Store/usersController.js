@@ -15,7 +15,7 @@
         app.get("/api/v1/users", function (request, response) { //route
             response.set("Content-Type", "application/json"); //set data format to return
             model.Users().findAll({ include: [model.Applications()] }).then(function (users) {
-                response.send(users); //send data
+                response.send(users); //send data             
             });          
         });
 

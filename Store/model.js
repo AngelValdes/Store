@@ -66,3 +66,43 @@ module.exports = {
     }
 
 };
+
+/* Other examples of queries
+sequelize.query("UPDATE users SET y = 42 WHERE x = 12").spread(function(results, metadata) {
+  // Results will be an empty array and metadata will contain the number of affected rows.
+})
+
+sequelize.query("SELECT * FROM `users`", { type: sequelize.QueryTypes.SELECT})
+  .then(function(users) {
+    // We don't need spread here, since only the results will be returned for select queries
+})
+
+// Callee is the model definition. This allows you to easily map a query to a predefined model
+sequelize.query('SELECT * FROM projects', { model: Projects }).then(function(projects){
+  // Each record will now be a instance of Project
+})
+
+sequelize.query('SELECT * FROM projects WHERE status = ?',
+  { replacements: ['active'], type: sequelize.QueryTypes.SELECT }
+).then(function(projects) {
+  console.log(projects)
+})
+
+sequelize.query('SELECT * FROM projects WHERE status = :status ',
+  { replacements: { status: 'active' }, type: sequelize.QueryTypes.SELECT }
+).then(function(projects) {
+  console.log(projects)
+})
+
+sequelize.query('SELECT *, "text with literal $$1 and literal $$status" as t FROM projects WHERE status = $1',
+  { bind: ['active'], type: sequelize.QueryTypes.SELECT }
+).then(function(projects) {
+  console.log(projects)
+})
+
+sequelize.query('SELECT *, "text with literal $$1 and literal $$status" as t FROM projects WHERE status = $status',
+  { bind: { status: 'active' }, type: sequelize.QueryTypes.SELECT }
+).then(function(projects) {
+  console.log(projects)
+})
+*/

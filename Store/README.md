@@ -1,5 +1,5 @@
 ﻿# Store
-# end points:
+# End points:
 # GET /api/v1/apps -> Display All Apps Info
 # GET /api/v1/users -> Display All Users Info
 # GET /api/v1/apps/:id -> Display Single App Info
