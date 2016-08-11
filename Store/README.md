@@ -33,6 +33,8 @@
 ```
 ## Display All Users Info including related entities
 - GET Route: http://localhost:3000/api/v1/users 
+
+#### Response Data:
 ```javascript
 [
 	{
@@ -61,6 +63,8 @@
 ```
 ## Display Single App Info including related entities
 - GET Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
+
+#### Response Data:
 ```javascript
 {
 	id: 1,
@@ -89,6 +93,8 @@
 ```
 ## Display Single User Info including related entities
 - GET Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
+
+#### Response Data:
 ```javascript
 {
 	id: 1,
@@ -118,6 +124,7 @@
 {"id":1,"title":"Best App Ever UPDATED","description":"A fast paced side scrolling shooter","releaseDate":"2016-06-15T00:00:00.000Z","userId":1}
 ```
 
+#### Response Data:
 ```javascript
 {
 	id: 1,
