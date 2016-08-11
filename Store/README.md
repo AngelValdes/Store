@@ -31,7 +31,7 @@
 ```
 ## Display All Users Info including related entities
 - GET Route: http://localhost:3000/api/v1/users 
-```
+```javascript
 [
 	{
 		id: 1,
@@ -59,7 +59,7 @@
 ```
 ## Display Single App Info including related entities
 - GET Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
-```
+```javascript
 {
 	id: 1,
 	title: "Best App Ever",
@@ -87,7 +87,7 @@
 ```
 ## Display Single User Info including related entities
 - GET Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
-```
+```javascript
 {
 	id: 1,
 	name: "maria",
