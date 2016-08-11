@@ -1,7 +1,7 @@
-﻿# Web API End Points Documentation
+﻿# RESTfull Web API Documentation
 #### Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
-#### This api has logging functionality, it will create a ./logs/logfile.log with logging information. Logging only happens when global.DEBUG = true. this can be set in the server.js file
+#### This api has logging functionality, it will create a ./logs/logfile.log with logging information. Logging only happens when global.DEBUG = true. this can be set in the server.js file. See below for routes end points.
 ## Display All Applications Info including related entities
 - GET Route: http://localhost:3000/api/v1/applications
 
