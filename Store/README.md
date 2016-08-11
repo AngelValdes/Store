@@ -2,6 +2,7 @@
 #### Replace http://localhost:3000 with appropiate hosting location
 ## Display All Applications Info including related entities
 - GET Route:  http://localhost:3000/api/v1/applications 
+
 #### Sample return data:
 ```javascript
 [
