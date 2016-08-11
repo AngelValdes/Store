@@ -1,7 +1,7 @@
 ﻿# Web API End Points Documentation
 #### Replace http://localhost:3000 with appropiate hosting location
 ## Display All Applications Info including related entities
-- GET Route:  http://localhost:3000/api/v1/applications
+- GET Route: http://localhost:3000/api/v1/applications
 ```javascript
 [
 	{
@@ -29,7 +29,9 @@
 		]
 	},
 ```
-# Display All Users Info including related entities -> GET http://localhost:3000/api/v1/users 
+## Display All Users Info including related entities
+- GET Route: http://localhost:3000/api/v1/users 
+```
 [
 	{
 		id: 1,
@@ -54,8 +56,10 @@
 		...
 	}
 ]
-
-# Display Single App Info including related entities -> GET http://localhost:3000/api/v1/applications/1 (1 could be any id value)
+```
+## Display Single App Info including related entities
+- GET Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
+```
 {
 	id: 1,
 	title: "Best App Ever",
@@ -80,7 +84,10 @@
 		}
 	]
 }
-# Display Single User Info including related entities -> GET http://localhost:3000/api/v1/users/1
+```
+## Display Single User Info including related entities
+- GET Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
+```
 {
 	id: 1,
 	name: "maria",
@@ -100,3 +107,4 @@
 			}
 		]
 }
+```
