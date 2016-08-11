@@ -1,7 +1,15 @@
 ﻿# RESTfull Web API Documentation
 #### Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
-#### This api has debug logging functionality, it will create a ./logs/logfile.log with logging information and display messages in the console. Logging and console messages only happen when global.DEBUG = true. this can be set in the server.js file. See below for routes end points.
+#### This api has debug logging functionality, it will create a ./logs/logfile.log with logging information and display messages in the console. Logging and console messages only happen when global.DEBUG = true. this can be set in the server.js file. 
+#### The logfile.log will contain three levels of messages: information, warnings, and errors. Example:
+```
+Log file Initialized on Thu Aug 11 2016 17:09:23 GMT-0400 (Eastern Daylight Time)
+ - at: 5:23:49 PM information(blue): info message
+ - at: 5:23:49 PM warning(yellow): warning message
+ - at: 5:23:49 PM error(red): error message
+ ```
+#### See below for routes end points.
 ## Display All Applications Info including related entities
 - GET Route: http://localhost:3000/api/v1/applications
 
