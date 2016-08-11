@@ -1,7 +1,8 @@
-﻿# Store End points: Replace http://localhost:3000 with appropiate hosting location
-# ------------------------------
+﻿# Web API End Points Documentation
+#### Replace http://localhost:3000 with appropiate hosting location
+# ------------------------------------------------------------------------
 # Display All Applications Info including related entities
-## GET http://localhost:3000/api/v1/applications 
+## GET Route:  http://localhost:3000/api/v1/applications 
 ### Sample return data:
 [
 	{
