@@ -9,7 +9,10 @@ Log file Initialized on Thu Aug 11 2016 17:09:23 GMT-0400 (Eastern Daylight Time
  - at: 5:23:49 PM warning(yellow): warning message
  - at: 5:23:49 PM error(red): error message
  ```
-#### See below for routes end points.
+#### See below for routes end points. When doing PUT and POST do not forget to add in the request header:
+ ```
+Content-Type: application/json
+ ```
 ## Display All Applications Info including related entities
 - GET Route: http://localhost:3000/api/v1/applications
 
