@@ -132,6 +132,11 @@ Content-Type: application/json
 ## Update Application Info 
 - PUT Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
 
+#### Request Header: 
+```
+Content-Type: application/json
+```
+
 #### Request Body: 
 ```javascript
 {"id":1,"title":"Best App Ever UPDATED","description":"A fast paced side scrolling shooter","releaseDate":"2016-06-15T00:00:00.000Z","userId":1}
@@ -156,7 +161,10 @@ Content-Type: application/json
 ```
 ## Update User Info 
 - PUT Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
-
+#### Request Header: 
+```
+Content-Type: application/json
+```
 #### Request Body: 
 ```javascript
 {"id":1,"name":"maria UPDATED"}
@@ -175,7 +183,10 @@ Content-Type: application/json
 ```
 ## Insert new Application 
 - POST Route: http://localhost:3000/api/v1/applications 
-
+#### Request Header: 
+```
+Content-Type: application/json
+```
 #### Request Body: 
 ```javascript
 {"title":"Best App Ever NEW","description":"A fast paced side scrolling shooter","releaseDate":"2016-06-15T00:00:00.000Z","userId":1}
@@ -198,7 +209,10 @@ Content-Type: application/json
 ```
 ## Insert New User  
 - POST Route: http://localhost:3000/api/v1/users
-
+#### Request Header: 
+```
+Content-Type: application/json
+```
 #### Request Body: 
 ```javascript
 {"name":"maria NEW"}
