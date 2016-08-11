@@ -108,3 +108,27 @@
 		]
 }
 ```
+## Upate application Info 
+- PUT Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
+#### {"id":1,"title":"Best App Ever UPDATED","description":"A fast paced side scrolling shooter","releaseDate":"2016-06-15T00:00:00.000Z","userId":1}
+```javascript
+{
+	id: 1,
+	name: "maria",
+	applications: 
+		[
+			{
+				id: 1,
+				title: "Best App Ever",
+				description: "A fast paced side scrolling shooter",
+				releaseDate: "2016-06-15T00:00:00.000Z",
+				createdAt: "2016-08-09T18:35:15.000Z",
+				updatedAt: "2016-08-09T18:35:15.000Z",
+				userId: 1
+			},
+			{
+				...
+			}
+		]
+}
+```
