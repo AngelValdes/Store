@@ -1,6 +1,8 @@
 ﻿(function (usersController) {
     "use strict";
     usersController.init = function (app) {
+        //load and initialize logger
+        var Logger = require("./logger.js");
         //configuration of json formatter
         var bodyParser = require("body-parser");
         app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,8 +16,11 @@
         //Read all
         app.get("/api/v1/users", function (request, response) { //route
             response.set("Content-Type", "application/json"); //set data format to return
-            model.Users().findAll({ include: [model.Applications()] }).then(function (users) {
+            model.Users().findAll({ include: [model.Applications()], raw: true }).then(function (users) {
+                Logger.debug("All users read \n" + JSON.stringify(users), 0);
                 response.send(users); //send data             
+            }).catch(function(error) {
+                Logger.debug("All users read error: " + error + "\n", 2);
             });          
         });
 
@@ -23,9 +28,12 @@
         app.get("/api/v1/users/:id", function (request, response) { //route
             var id = request.params.id; //get id value from route params
             response.set("Content-Type", "application/json"); //set data format to return
-            model.Users().findAll({ where: { id: id }, include: [model.Applications()] }).then(function (users) {
-                response.send(users); //send data
-            });  
+            model.Users()
+                .findAll({ where: { id: id }, include: [model.Applications()] })
+                .then(function(users) {
+                    response.send(users); //send data
+                })
+                ;  
             
         });
 
@@ -34,6 +42,7 @@
             var name = request.body.name; //get values from body in request
             var user = { "name": name } //compose new item
             model.Users().create(user); //add item to list
+            Logger.debug("user created \n" + JSON.stringify(user), 0);
             response.send([201, user, null]); //return created
         });
  
@@ -43,6 +52,7 @@
             var name = request.body.name; //get values from body in request
             var user = { "name": name } //compose item
             model.Users().update(user, { where: { id: id } }); //update item
+            Logger.debug("user updated \n" + JSON.stringify(user), 0);
             response.send([301, user, null]); //return modified
         });
 

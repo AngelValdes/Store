@@ -20,9 +20,9 @@ Model.sync();
 
 //load and initialize logger
 var Logger = require("./logger.js");
-Logger.debug("info message", 0);
-Logger.debug("warning message", 1);
-Logger.debug("error message", 2);
+//Logger.debug("info message", 0);
+//Logger.debug("warning message", 1);
+//Logger.debug("error message", 2);
 
 //initialize server and listen to port
 var Server = Http.createServer(App);
