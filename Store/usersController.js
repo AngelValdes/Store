@@ -17,10 +17,11 @@
         app.get("/api/v1/users", function (request, response) { //route
             response.set("Content-Type", "application/json"); //set data format to return
             model.Users().findAll({ include: [model.Applications()], raw: true }).then(function (users) {
-                Logger.debug("All users read \n" + JSON.stringify(users), 0);
-                response.send(users); //send data             
+                Logger.debug("All users read :" + JSON.stringify(users) + "\n", 0);
+                response.status(200).send([200,users, null]); //send data             
             }).catch(function(error) {
                 Logger.debug("All users read error: " + error + "\n", 2);
+                response.status(500).send([500, null, null]);
             });          
         });
 
@@ -30,20 +31,28 @@
             response.set("Content-Type", "application/json"); //set data format to return
             model.Users()
                 .findAll({ where: { id: id }, include: [model.Applications()] })
-                .then(function(users) {
-                    response.send(users); //send data
-                })
-                ;  
-            
+                .then(function (users) {
+                    Logger.debug("by id user read :" + JSON.stringify(users) + "\n", 0);
+                    response.status(200).send([200, users, null]); //send data
+                }).catch(function (error) {
+                    Logger.debug("by id user read error: " + error + "\n", 2);
+                    response.status(500).send([500, null, null]);
+                });             
         });
 
         //Create
         app.post("/api/v1/users", function (request, response) { //route
             var name = request.body.name; //get values from body in request
             var user = { "name": name } //compose new item
-            model.Users().create(user); //add item to list
-            Logger.debug("user created \n" + JSON.stringify(user), 0);
-            response.send([201, user, null]); //return created
+            model.Users().create(user).then(
+                function (data) {
+                    Logger.debug("user created :" + JSON.stringify(user) + "\n", 0);
+                    response.status(201).send([201, user, null]); //return created
+                })
+                .catch(function (error) {
+                    Logger.debug("Creating user error: " + error + "\n", 2);
+                    response.status(500).send([500, null, null]);
+                }); //add item to list            
         });
  
         //update
