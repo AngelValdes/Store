@@ -16,7 +16,7 @@
         //Read all
         app.get("/api/v1/applications", function (request, response) { //route
             response.set("Content-Type", "application/json"); //set data format to return
-            model.Applications().findAll({ include: [model.Users(), model.ArtAssets()] })
+            model.Applications().findAll({ include: [model.Users(), model.ArtAssets()], raw: true})
                 .then(function (applications) {
                     logger.debug("All applications read :" + JSON.stringify(applications) + "\n", 0);
                     response.status(200).send([200, applications, null]); //send data   
@@ -31,7 +31,7 @@
         app.get("/api/v1/applications/:id", function (request, response) { //route
             var id = request.params.id; //get id value from route params
             response.set("Content-Type", "application/json"); //set data format to return
-            model.Applications().findAll({ where: { id: id }, include: [model.Users(), model.ArtAssets()] })
+            model.Applications().findAll({ where: { id: id }, include: [model.Users(), model.ArtAssets()], raw: true })
                 .then(function (applications) {
                     logger.debug("by id application read :" + JSON.stringify(applications) + "\n", 0);
                     response.status(200).send([200, applications, null]); //send data

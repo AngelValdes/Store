@@ -49,7 +49,7 @@ module.exports = {
                 default:
                     console.log(message.blue);
             }
-            
+            //append message to logfile
             Fs.appendFile(Path, "\n - " + "at: " + Datetime.toLocaleTimeString() + " " + Levels[level].type + "(" + Levels[level].color + "): " + message, function (err) {
                 if (err) {
                     console.log("Error appending to log: " + err);//if error appending, log to console
