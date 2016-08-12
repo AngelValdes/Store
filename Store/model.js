@@ -1,5 +1,7 @@
 ﻿//ORM
 //load dependency module
+//load and initialize logger
+var Logger = require("./logger.js");
 var Sequelize = require('sequelize');
 //configure connection to database
 var sequelize = new Sequelize("store", 'root', 'root', {
@@ -18,15 +20,16 @@ var sequelize = new Sequelize("store", 'root', 'root', {
 var Users;
 var Applications;
 var ArtAssets;
+
 module.exports = {
     testConnection: function() { //test connection
         sequelize
             .authenticate()
             .then(function () {
-                console.log('Connection has been established successfully.');
+                Logger.debug("Connection has been established successfully.\n", 0);
             })
             .catch(function (err) {
-                console.log('Unable to connect to the database:', err);
+                Logger.debug("Unable to connect to the database:", err + "\n");
             });
     },
     define: function() { //define model
@@ -53,7 +56,13 @@ module.exports = {
         Applications.hasMany(ArtAssets);
     },
     sync: function () { //synchronize model
-        sequelize.sync();
+        sequelize.sync()
+            .then(function() {
+                Logger.debug("All models are synchronized\n", 0);
+            })
+            .catch(function(error) {
+                Logger.debug("Model synchronization error: " + error + "\n", 2); 
+            });
     },
     Users: function() { //expose model
         return Users;
