@@ -20,7 +20,7 @@ exports.create = (payload, err, success) => {
   db.user.create(payload).then(success).catch(err);
 };
 // modify existing
-exports.update = (payload, err, success) => {
+exports.update = (payload, err, success) => { // investigate Object.assign(entityObject, req.body)
   db.user.find({
     where: {
       id: payload.id,

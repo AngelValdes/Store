@@ -8,14 +8,14 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "colors": "^1.1.2",
-    "express": "^4.14.0",
-    "mysql": "^2.11.1",
-    "sequelize": "^3.23.6",
-    "dotenv": "^2.0.0",
-    "supertest": "^2.0.0",
-    "expect": "^1.20.2",
     "chai": "^3.5.0",
-    "faker": "^3.1.0"
+    "colors": "^1.1.2",
+    "dotenv": "^2.0.0",
+    "expect": "^1.20.2",
+    "express": "^4.14.0",
+    "faker": "^3.1.0",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.24.0",
+    "supertest": "^2.0.0"
   }
 }

@@ -74,13 +74,13 @@ module.exports = (express) => {
               res.status(500).send(err);
             },
             (data) => {
-              if (data === 1) {
-                logger.debug('id: ' + req.params.id + ' deleted!\n', 0);
-                res.status(200).send('id: ' + req.params.id + ' deleted!');
-              } else {
-                logger.debug('id: ' + req.params.id + ' not found in database!\n', 0);
-                res.status(202).send('id: ' + req.params.id + ' not found in database!');
-              }
+                if (data === 1) {
+                    logger.debug('{ response: ' + data + ', message:  id ' + req.params.id + ' deleted! }\n', 0);
+                    res.status(200).send({ response: data, message: 'id ' + req.params.id + ' deleted!' });
+                } else {
+                    logger.debug('{ response: ' + data + ', message:  id ' + req.params.id + ' not found in database }\n', 0);
+                    res.status(202).send({ response: data, message: 'id ' + req.params.id + ' not found in database!' });
+                }
             });
   });
   return router;

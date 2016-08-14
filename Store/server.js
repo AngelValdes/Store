@@ -12,7 +12,7 @@ app.use('/', require('./routes')(express)); // initialize routes
 
 const logger = require('./services/logger');
 
-
 module.exports = app.listen(port,
 () => logger.debug('Sever Active on:' + port, 0)); // initialize server, exception to rule.
+
 

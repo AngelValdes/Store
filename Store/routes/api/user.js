@@ -4,7 +4,7 @@ const logger = require('../../services/logger');
 
 module.exports = (express) => {
   const router = express.Router();
-  // route: select all apps
+  // route: select all users
   router.get('/users', (req, res) => {
     user.findAll(
             (err) => { // if error, log and return error status and message
@@ -16,7 +16,7 @@ module.exports = (express) => {
               res.status(200).json(data);
             });
   });
-  // route: select one app by id
+  // route: select one user by id
   router.get('/users/:id', (req, res) => {
     user.findById(req.params,
             (err) => {
@@ -28,7 +28,7 @@ module.exports = (express) => {
               res.status(200).json(data);
             });
   });
-  // route: insert new app
+  // route: insert new user
   router.post('/users', (req, res) => {
     user.create(req.body,
             (err) => {
@@ -40,7 +40,7 @@ module.exports = (express) => {
               res.status(201).json(data);
             });
   });
-  // route: update existing app
+  // route: update existing user
   router.put('/users/:id', (req, res) => {
     /* eslint no-param-reassign: 0 */
     req.body.id = req.params.id; // recommended by instructor
@@ -54,7 +54,7 @@ module.exports = (express) => {
               res.status(200).json(data);
             });
   });
-  // route: remove existing app
+  // route: remove existing user
   router.delete('/users/:id', (req, res) => {
     user.destroy(req.params,
             (err) => {
@@ -62,13 +62,13 @@ module.exports = (express) => {
               res.status(500).send(err);
             },
             (data) => {
-              if (data === 1) {
-                logger.debug('id: ' + req.params.id + ' deleted!\n', 0);
-                res.status(200).send('id: ' + req.params.id + ' deleted!');
-              } else {
-                logger.debug('id: ' + req.params.id + ' not found in database!\n', 0);
-                res.status(202).send('id: ' + req.params.id + ' not found in database!');
-              }
+                if (data === 1) {
+                    logger.debug('{ response: ' + data + ', message:  id ' + req.params.id + ' deleted! }\n', 0);
+                res.status(200).send({ response: data, message: 'id ' + req.params.id + ' deleted!' });
+                } else {
+                    logger.debug('{ response: ' + data + ', message:  id ' + req.params.id + ' not found in database }\n', 0);
+                res.status(202).send({ response: data, message: 'id ' + req.params.id + ' not found in database!' });
+                }
             });
   });
   return router;
