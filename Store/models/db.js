@@ -14,28 +14,28 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   pool: {
     max: 5,
     min: 0,
-    idle: 10000,
+    idle: 10000
   },
   define: {
-    timestamps: false, // true by default
-  },
+    timestamps: false // true by default
+  }
 });
 
 // ORM Entities Models and UnitOfWork
 const user = sequelize.define('user', { // define user model
-  name: Sequelize.STRING,
+  name: Sequelize.STRING
 });
 const app = sequelize.define('app', { // define app model
   title: Sequelize.STRING,
   description: Sequelize.TEXT,
-  releaseDate: Sequelize.DATE,
+  releaseDate: Sequelize.DATE
 },
   {
-    timestamps: true,
+    timestamps: true
   });
 const artAsset = sequelize.define('artAsset', { // define artAsset model
   title: Sequelize.STRING,
-  srcLink: Sequelize.STRING,
+  srcLink: Sequelize.STRING
 });
 
 // Entities relationships
