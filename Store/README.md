@@ -19,7 +19,7 @@ Log file Initialized on Thu Aug 11 2016 17:09:23 GMT-0400 (Eastern Daylight Time
 {
 	id: 1,
 	name: "maria",
-	applications: 
+	apps: 
 		[
 			{
 				id: 1,
@@ -36,12 +36,13 @@ Log file Initialized on Thu Aug 11 2016 17:09:23 GMT-0400 (Eastern Daylight Time
 		]
 }
  ```
-#### See below for routes end points. When doing PUT and POST do not forget to add in the request header:
+#### When doing PUT and POST do not forget to add in the request header:
  ```
 Content-Type: application/json
  ```
-## Display All Applications Info including related entities
-- GET Route: http://localhost:3000/api/v1/applications
+#### See below for routes end points. 
+## Display all apps info including related entities
+- GET Route: http://localhost:3000/api/v1/apps
 
 #### Response Data:
 ```javascript
@@ -63,15 +64,56 @@ Content-Type: application/json
 				id: 1,
 				title: "Splash Screen",
 				srcLink: "http://i.imgur.com/5e5Ihb6.jpg",
-				applicationId: 1
+				appId: 1
 			},
 			{
 				...
 			}
 		]
 	},
+	{ 
+		... 
+	}
+	...
+]
 ```
-## Display All Users Info including related entities
+## Display all app info including related entities for a userId
+- GET Route: http://localhost:3000/api/v1/users/1/apps
+
+#### Response Data:
+```javascript
+[
+	{
+		id: 1,
+		title: "Best App Ever",
+		description: "A fast paced side scrolling shooter",
+		releaseDate: "2016-06-15T00:00:00.000Z",
+		createdAt: "2016-08-09T18:35:15.000Z",
+		updatedAt: "2016-08-09T18:35:15.000Z",
+		userId: 1,
+		user: {
+				id: 1,
+				name: "maria"
+			},
+		artAssets: [
+			{
+				id: 1,
+				title: "Splash Screen",
+				srcLink: "http://i.imgur.com/5e5Ihb6.jpg",
+				appId: 1
+			},
+			{
+				...
+			}
+		]
+	},
+	{ 
+		... 
+	}
+	...
+]
+```
+## Display all users info including related entities
 - GET Route: http://localhost:3000/api/v1/users 
 
 #### Response Data:
@@ -80,7 +122,7 @@ Content-Type: application/json
 	{
 		id: 1,
 		name: "maria",
-		applications: 
+		apps: 
 			[
 				{
 					id: 1,
@@ -99,10 +141,11 @@ Content-Type: application/json
 	{
 		...
 	}
+	...
 ]
 ```
-## Display Single App Info including related entities
-- GET Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
+## Display single app info including related entities
+- GET Route: http://localhost:3000/api/v1/apps/1 (1 could be any id value)
 
 #### Response Data:
 ```javascript
@@ -123,7 +166,7 @@ Content-Type: application/json
 			id: 1,
 			title: "Splash Screen",
 			srcLink: "http://i.imgur.com/5e5Ihb6.jpg",
-			applicationId: 1
+			appId: 1
 		},
 		{
 			...
@@ -131,7 +174,7 @@ Content-Type: application/json
 	]
 }
 ```
-## Display Single User Info including related entities
+## Display single user info including related entities
 - GET Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
 
 #### Response Data:
@@ -139,7 +182,7 @@ Content-Type: application/json
 {
 	id: 1,
 	name: "maria",
-	applications: 
+	apps: 
 		[
 			{
 				id: 1,
@@ -156,8 +199,8 @@ Content-Type: application/json
 		]
 }
 ```
-## Update Application Info 
-- PUT Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
+## Update app info 
+- PUT Route: http://localhost:3000/api/v1/apps/1 (1 could be any id value)
 
 #### Request Header: 
 ```
@@ -186,7 +229,7 @@ Content-Type: application/json
 ]
 
 ```
-## Update User Info 
+## Update user info 
 - PUT Route: http://localhost:3000/api/v1/users/1 (1 could be any id value)
 
 #### Request Header: 
@@ -209,8 +252,8 @@ Content-Type: application/json
 	null
 ]
 ```
-## Insert new Application 
-- POST Route: http://localhost:3000/api/v1/applications 
+## Insert new app 
+- POST Route: http://localhost:3000/api/v1/apps 
 
 #### Request Header: 
 ```
@@ -226,6 +269,7 @@ Content-Type: application/json
 [
 	201,
 	{
+		id: 5, 
 		title: "Best App Ever NEW",
 		description: "A fast paced side scrolling shooter",
 		releaseDate: "2016-06-15T00:00:00.000Z",
@@ -236,7 +280,7 @@ Content-Type: application/json
 	null
 ]
 ```
-## Insert New User  
+## Insert new user  
 - POST Route: http://localhost:3000/api/v1/users
 
 #### Request Header: 
@@ -258,17 +302,17 @@ Content-Type: application/json
 	null
 ]
 ```
-## Delete Application 
-- DELETE Route: http://localhost:3000/api/v1/applications/1 (1 could be any id value)
+## Delete app 
+- DELETE Route: http://localhost:3000/api/v1/apps/1 (1 could be any id value)
 
 #### Response Data:
 ```javascript
-[301,null,null]
+[200,"id: 3 deleted!",null]
 ```
-## Delete User  
+## Delete user  
 - DELETE Route: http://localhost:3000/api/v1/users/1
 
 #### Response Data:
 ```javascript
-[301,null,null]
+[200,"id: 3  not found in database!",null]
 ```
