@@ -1,20 +1,22 @@
-﻿// app routes
+// app routes
 const app = require('../../models/app');
 const logger = require('../../services/logger');
 
 module.exports = (express) => {
   const router = express.Router();
+  // route: select all apps
   router.get('/apps', (req, res) => {
     app.findAll(
-            (err) => {
+            (err) => { // if error, log and return error status and message
               logger.debug('All apps read error:' + err.message + '\n', 2);
               res.status(500).send(err.message);
             },
-            (data) => {
+            (data) => { // if success log and return status and data
               logger.debug('All apps read:' + JSON.stringify(data) + '\n', 0);
               res.status(200).json(data);
             });
   });
+  // route: select one app by id
   router.get('/apps/:id', (req, res) => {
     app.findById(req.params,
             (err) => {
@@ -26,6 +28,7 @@ module.exports = (express) => {
               res.status(200).json(data);
             });
   });
+  // route: select all apps for a user id
   router.get('/users/:id/apps', (req, res) => {
     app.findAllByUserId(req.params.id,
             (err) => {
@@ -37,6 +40,7 @@ module.exports = (express) => {
               res.status(200).json(data);
             });
   });
+  // route: insert new app
   router.post('/apps', (req, res) => {
     app.create(req.body,
             (err) => {
@@ -48,8 +52,10 @@ module.exports = (express) => {
               res.status(201).json(data);
             });
   });
+  // route: update existing app
   router.put('/apps/:id', (req, res) => {
-    req.body.id = req.params.id;
+    /* eslint no-param-reassign: 0 */
+    req.body.id = req.params.id; // recommended by instructor
     app.update(req.body,
             (err) => {
               logger.debug('Updating app error:' + err.message + '\n', 2);
@@ -60,6 +66,7 @@ module.exports = (express) => {
               res.status(200).json(data);
             });
   });
+  // route: remove existing app
   router.delete('/apps/:id', (req, res) => {
     app.destroy(req.params,
             (err) => {
@@ -68,10 +75,10 @@ module.exports = (express) => {
             },
             (data) => {
               if (data === 1) {
-                logger.debug('id: ' + req.params.id + ' deleted!' + '\n', 0);
+                logger.debug('id: ' + req.params.id + ' deleted!\n', 0);
                 res.status(200).send('id: ' + req.params.id + ' deleted!');
               } else {
-                logger.debug('id: ' + req.params.id + ' not found in database!' + '\n', 0);
+                logger.debug('id: ' + req.params.id + ' not found in database!\n', 0);
                 res.status(202).send('id: ' + req.params.id + ' not found in database!');
               }
             });

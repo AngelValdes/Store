@@ -1,4 +1,4 @@
-﻿global.DEBUG = true; //  define running environment at a global scope
+global.DEBUG = true; //  define running environment at a global scope
 
 const express = require('express'); // configure web sever
 const bodyParser = require('body-parser');
@@ -10,7 +10,9 @@ app.use(bodyParser.json()); // to get json from req body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', require('./routes')(express)); // initialize routes
 
+const logger = require('./services/logger');
+
+
 module.exports = app.listen(port,
-() => console.log('Sever Active on:', port)); // initialize server;
-// exports.server = server;
+() => logger.debug('Sever Active on:' + port, 0)); // initialize server, exception to rule.
 

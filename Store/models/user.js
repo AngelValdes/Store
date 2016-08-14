@@ -1,10 +1,10 @@
-﻿// User Repository
+// User Repository
 const db = require('./db');
-
+// getAll including relations
 exports.findAll = (err, success) => {
   db.user.findAll({ include: [db.app] }).then(success).catch(err);
 };
-
+// getById including relations
 exports.findById = (payload, err, success) => {
   db.user.find({
     where: {
@@ -15,9 +15,11 @@ exports.findById = (payload, err, success) => {
     ],
   }).then(success).catch(err);
 };
+// insert new
 exports.create = (payload, err, success) => {
   db.user.create(payload).then(success).catch(err);
 };
+// modify existing
 exports.update = (payload, err, success) => {
   db.user.find({
     where: {
@@ -27,6 +29,7 @@ exports.update = (payload, err, success) => {
     data.updateAttributes(payload).then(success).catch(err);
   }).catch(err);
 };
+// delete existing
 exports.destroy = (payload, err, success) => {
   db.user.destroy({
     where: {

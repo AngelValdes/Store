@@ -1,13 +1,39 @@
 ﻿# RESTfull Web API Documentation
 #### Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
+#### create a .env file with the following values according to your database server:
+```
+DB_NAME=store
+DB_USER=root
+DB_PASS=
+DB_HOST=localhost
+DB_SCHEMA=mysql
+DB_PORT=3306
+```
 #### This api has debug logging functionality, it will create a ./logs/logfile.log with logging information and display messages in the console. Logging and console messages only happen when global.DEBUG = true. this can be set in the server.js file. 
-#### The logfile.log will contain three levels of messages: information, warnings, and errors. Example:
+#### The logfile.log will contain three levels of messages: information, warnings, and errors. It will also log the data being manipulated Example:
 ```
 Log file Initialized on Thu Aug 11 2016 17:09:23 GMT-0400 (Eastern Daylight Time)
- - at: 5:23:49 PM information(blue): info message
- - at: 5:23:49 PM warning(yellow): warning message
- - at: 5:23:49 PM error(red): error message
+ - at: 1:59:47 AM information(blue): by id user read:
+{
+	id: 1,
+	name: "maria",
+	applications: 
+		[
+			{
+				id: 1,
+				title: "Best App Ever",
+				description: "A fast paced side scrolling shooter",
+				releaseDate: "2016-06-15T00:00:00.000Z",
+				createdAt: "2016-08-09T18:35:15.000Z",
+				updatedAt: "2016-08-09T18:35:15.000Z",
+				userId: 1
+			},
+			{
+				...
+			}
+		]
+}
  ```
 #### See below for routes end points. When doing PUT and POST do not forget to add in the request header:
  ```

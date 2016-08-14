@@ -1,11 +1,11 @@
-﻿// app Repository
+// app Repository
 const db = require('./db');
-
+// getAll including relations
 exports.findAll = (err, success) => {
   db.app.findAll({ include: [db.user, db.artAsset] })
-  .then(success).catch(err); // { include: [db.User, db.ArtAsset] }
+  .then(success).catch(err);
 };
-
+// getById including relations
 exports.findById = (payload, err, success) => {
   db.app.find({
     where: {
@@ -16,6 +16,7 @@ exports.findById = (payload, err, success) => {
     ],
   }).then(success).catch(err);
 };
+// getAll for specific userId including relations
 exports.findAllByUserId = (payload, err, success) => {
   db.app.findAll({
     where: {
@@ -24,9 +25,11 @@ exports.findAllByUserId = (payload, err, success) => {
     include: [db.user, db.artAsset],
   }).then(success).catch(err);
 };
+// insert new
 exports.create = (payload, err, success) => {
   db.app.create(payload).then(success).catch(err);
 };
+// modify existing
 exports.update = (payload, err, success) => {
   db.app.find({
     where: {
@@ -36,6 +39,7 @@ exports.update = (payload, err, success) => {
     data.updateAttributes(payload).then(success).catch(err);
   }).catch(err);
 };
+// delete existing
 exports.destroy = (payload, err, success) => {
   db.app.destroy({
     where: {

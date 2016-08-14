@@ -1,7 +1,6 @@
-﻿// ORM UnitOfWork
-// npm i --save-dev dotenv to support environment variables, then make .env with values
-// npm i --save sequelize
-// npm i --save mysql
+// npm i --save-dev dotenv -> to support environment variables, then make .env with values
+// npm i --save sequelize -> ORM
+// npm i --save mysql -> connect to mysql database
 
 const Sequelize = require('sequelize');
 require('dotenv').config();
@@ -21,6 +20,8 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     timestamps: false, // true by default
   },
 });
+
+// ORM Entities Models and UnitOfWork
 const user = sequelize.define('user', { // define user model
   name: Sequelize.STRING,
 });
@@ -37,7 +38,7 @@ const artAsset = sequelize.define('artAsset', { // define artAsset model
   srcLink: Sequelize.STRING,
 });
 
-// define model relationships
+// Entities relationships
 user.hasMany(app, { foreignKey: 'userId' });
 app.belongsTo(user);
 app.hasMany(artAsset, { foreignKey: 'appId' });
