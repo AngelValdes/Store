@@ -1,7 +1,7 @@
 ﻿# RESTfull Web API Documentation
 #### Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
-#### create a .env file with the following values according to your database server:
+#### Create a .env file with the following values according to your database server:
 ```
 DB_NAME=store
 DB_USER=root
@@ -10,6 +10,7 @@ DB_HOST=localhost
 DB_SCHEMA=mysql
 DB_PORT=3306
 ```
+#### Also make sure you create the database/user/password before running the app. ORM will create the tables and relations automatically in the database.
 #### This api has debug logging functionality, it will create a ./logs/logfile.log with logging information and display messages in the console. Logging and console messages only happen when global.DEBUG = true. this can be set in the server.js file. 
 #### The logfile.log will contain three levels of messages: information, warnings, and errors. It will also log the data being manipulated Example:
 ```
