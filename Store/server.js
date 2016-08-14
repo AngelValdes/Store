@@ -1,30 +1,16 @@
-﻿//define running environment at a global scope
-global.DEBUG = true;
+﻿global.DEBUG = true; //  define running environment at a global scope
 
-//configure web sever
-var Http = require("http");
-var Express = require("express");
+const express = require('express'); // configure web sever
+const bodyParser = require('body-parser');
 
-//instantiate application
-var App = Express();
+const port = process.env.PORT || 3000;
+const app = express();  // instantiate application
 
-//load and initialize logger
-var Logger = require("./logger.js");
+app.use(bodyParser.json()); // to get json from req body
+app.use(bodyParser.urlencoded({extended: true}));
+app.use('/', require('./routes')(express)); //initialize routes 
 
-//configure controllers hub
-var Controllers = require("./index");
-Controllers.init(App);
-
-//initialize model, test connection, define initial model, sync model
-var Model = require("./model.js");
-Model.testConnection();
-Model.define();
-Model.sync();
-
-//initialize server and listen to port
-var Server = Http.createServer(App);
-Server.listen(3000);
-
+exports.server = app.listen(port, () => console.log('Sever Active on:', port)); // initialize server 
 
 
 

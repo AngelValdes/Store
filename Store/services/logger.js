@@ -1,56 +1,56 @@
 ﻿//logger utility module
 //----------------------------------------------------------------------
 //use file system
-var Fs = require("fs");
-var Path = "./logs/logfile.log";
+const fs = require("fs");
+const path = "./logs/logfile.log";
 //date time functionality
-var Datetime = new Date();
+const datetime = new Date();
 //log levels
-var Levels = [
+const levels = [
     { level: 0, type: "information", color: "blue" },
     { level: 1, type: "warning", color: "yellow" },
     { level: 2, type: "error", color: "red" }
 ];
 //console colors
-var Colors = require('colors');
+const colors = require('colors');
 
 //check for log file existance, if not exists, initialize it with date
-Fs.stat(Path, function (err, stat) {
-    if (err == null) {
-        console.log('The log file already exists');
+fs.stat(path, (err, stat) => { //I know this parameter is not used, but I left it there as reminder
+    if (err === null) {
+        console.log('The log file already exists, logger initialized!');
     } else {
         //create log file with date and time
-        Fs.writeFile(Path, "Log file Initialized on " + Datetime,
-            function (erro) {
+        fs.writeFile(path, "Log file Initialized on " + datetime,
+            (erro) => {
                 if (erro) {
                     return console.log(erro);
                 }
-                return console.log("The log file was created");
+                return console.log("The log file was created, logger initialized!");
             }
         );
     }
 });
 
 module.exports = {
-    debug: function(message, level) { 
+    debug: (message, level) => { 
         if (global.DEBUG === true) {
             //log to console and write to file
             //display message on console in color
-            switch (Levels[level].color) {
+            switch (levels[level].color) {
                 case "blue":
-                    console.log(message.blue);
+                    console.log(message.blue.bgWhite);
                     break;
                 case "yellow":
-                    console.log(message.yellow);
+                    console.log(message.yellow.bgWhite);
                     break;
                 case "red": 
-                    console.log(message.red);
+                    console.log(message.red.bgWhite);
                     break;
                 default:
                     console.log(message.blue);
             }
             //append message to logfile
-            Fs.appendFile(Path, "\n - " + "at: " + Datetime.toLocaleTimeString() + " " + Levels[level].type + "(" + Levels[level].color + "): " + message, function (err) {
+            fs.appendFile(path, "\n - " + "at: " + datetime.toLocaleTimeString() + " " + levels[level].type + "(" + levels[level].color + "): " + message,  (err) => {
                 if (err) {
                     console.log("Error appending to log: " + err);//if error appending, log to console
                 }          
@@ -60,20 +60,20 @@ module.exports = {
 };
 
 //usage
-//Logger.debug("info message", 0);
-//Logger.debug("warning message", 1);
-//Logger.debug("error message", 2);
+//logger.debug("info message", 0);
+//logger.debug("warning message", 1);
+//logger.debug("error message", 2);
 
 //additional notes:
 //another way to write a file, if file does not exist, it will create it
 //var buffer = new Buffer("\n some content \n");
-//Fs.open(Path, 'w+', function (err, fd) {
+//fs.open(path, 'w+', function (err, fd) {
 //    if (err) {
 //        console.log('error opening file: ' + err);
 //    } else {
-//        Fs.write(fd, buffer, 0, buffer.length, null, function (err) {
+//        fs.write(fd, buffer, 0, buffer.length, null, function (err) {
 //            if (err) throw 'error writing file: ' + err;
-//            Fs.close(fd,
+//            fs.close(fd,
 //                function() {
 //                    console.log('file written');
 //                });
