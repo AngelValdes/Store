@@ -5,7 +5,7 @@
 
 ### Included testing files written with [Mocha] (https://mochajs.org/)
 
-### No IDE dependencies, you can open in any IDE. In VS, open as web site or make a new project and add these existing files and folders.
+### No IDE dependencies, you can open in any IDE. In VS, open as web site or make a new nodeJS project and add these existing files and folders.
 
 #### Note: Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
