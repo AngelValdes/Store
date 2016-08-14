@@ -1,53 +1,53 @@
-﻿//ORM UnitOfWork
-//npm i --save-dev dotenv to support environment variables, then make .env with values
-//npm i --save sequelize
-//npm i --save mysql
+﻿// ORM UnitOfWork
+// npm i --save-dev dotenv to support environment variables, then make .env with values
+// npm i --save sequelize
+// npm i --save mysql
 
-var Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 require('dotenv').config();
-const logger = require("../Services/logger.js"); 
-//configure connection to database
+const logger = require('../services/logger');
+// configure connection to database
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: process.env.DB_SCHEMA,
-    logging: false,
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    },
-    define: {
-        timestamps: false // true by default
-    }
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  dialect: process.env.DB_SCHEMA,
+  logging: false,
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000,
+  },
+  define: {
+    timestamps: false, // true by default
+  },
 });
-const user = sequelize.define('user', { //define user model
-    name: Sequelize.STRING
+const user = sequelize.define('user', { // define user model
+  name: Sequelize.STRING,
 });
-const app = sequelize.define('app',{ //define app model    
-    title: Sequelize.STRING,
-    description: Sequelize.TEXT,
-    releaseDate: Sequelize.DATE
+const app = sequelize.define('app', { // define app model
+  title: Sequelize.STRING,
+  description: Sequelize.TEXT,
+  releaseDate: Sequelize.DATE,
 },
-{
-    timestamps: true
-});
-const artAsset = sequelize.define('artAsset', { //define artAsset model
-    title: Sequelize.STRING,
-    srcLink: Sequelize.STRING
+  {
+    timestamps: true,
+  });
+const artAsset = sequelize.define('artAsset', { // define artAsset model
+  title: Sequelize.STRING,
+  srcLink: Sequelize.STRING,
 });
 
-//define model relationships
+// define model relationships
 user.hasMany(app, { foreignKey: 'userId' });
 app.belongsTo(user);
 app.hasMany(artAsset, { foreignKey: 'appId' });
 
 sequelize.sync()
-    .then(function () {
-       logger.debug("All models are synchronized\n", 0);
+    .then(() => {
+      logger.debug('All models are synchronized\n', 0);
     })
-    .catch(function (error) {
-        logger.debug("Model synchronization error: " + error + "\n", 2);
+    .catch((error) => {
+      logger.debug('Model synchronization error: ' + error + '\n', 2);
     });
 
 exports.sequelize = sequelize;
@@ -56,7 +56,7 @@ exports.app = app;
 exports.artAsset = artAsset;
 
 
-//testConnection: function() { //test connection
+// testConnection: function() { //test connection
 //    sequelize
 //        .authenticate()
 //        .then(function () {
@@ -65,7 +65,7 @@ exports.artAsset = artAsset;
 //        .catch(function (err) {
 //            Logger.debug("Unable to connect to the database:", err + "\n");
 //        });
-//},
+// },
 
 /* Other examples of queries
 sequelize.query("UPDATE users SET y = 42 WHERE x = 12").spread(function(results, metadata) {
@@ -94,13 +94,15 @@ sequelize.query('SELECT * FROM projects WHERE status = :status ',
   console.log(projects)
 })
 
-sequelize.query('SELECT *, "text with literal $$1 and literal $$status" as t FROM projects WHERE status = $1',
+sequelize.query('SELECT *, "text with literal $$1 and literal $$status" as t FROM
+projects WHERE status = $1',
   { bind: ['active'], type: sequelize.QueryTypes.SELECT }
 ).then(function(projects) {
   console.log(projects)
 })
 
-sequelize.query('SELECT *, "text with literal $$1 and literal $$status" as t FROM projects WHERE status = $status',
+sequelize.query('SELECT *, "text with literal $$1 and literal $$status" as t FROM
+ projects WHERE status = $status',
   { bind: { status: 'active' }, type: sequelize.QueryTypes.SELECT }
 ).then(function(projects) {
   console.log(projects)

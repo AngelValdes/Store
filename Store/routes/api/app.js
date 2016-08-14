@@ -1,81 +1,80 @@
-﻿//app routes
+﻿// app routes
 const app = require('../../models/app');
-const logger = require("../../Services/logger.js");
+const logger = require('../../services/logger');
 
 module.exports = (express) => {
-    const router = express.Router();
-    router.get('/apps', (req, res) => {
-        app.findAll(
+  const router = express.Router();
+  router.get('/apps', (req, res) => {
+    app.findAll(
             (err) => {
-                logger.debug('All apps read error:' + err.message + '\n', 2);
-                res.status(500).send(err.message);
+              logger.debug('All apps read error:' + err.message + '\n', 2);
+              res.status(500).send(err.message);
             },
             (data) => {
-                logger.debug('All apps read:' + JSON.stringify(data) + '\n', 0);
-                res.status(200).json(data);
+              logger.debug('All apps read:' + JSON.stringify(data) + '\n', 0);
+              res.status(200).json(data);
             });
-    });
-    router.get('/apps/:id', (req, res) => {
-        app.findById(req.params,
+  });
+  router.get('/apps/:id', (req, res) => {
+    app.findById(req.params,
             (err) => {
-                logger.debug('by id app read error:' + err.message + '\n', 2);
-                res.status(500).send(err.message);
+              logger.debug('by id app read error:' + err.message + '\n', 2);
+              res.status(500).send(err.message);
             },
             (data) => {
-                logger.debug('by id app read:' + JSON.stringify(data) + '\n', 0);
-                res.status(200).json(data);
+              logger.debug('by id app read:' + JSON.stringify(data) + '\n', 0);
+              res.status(200).json(data);
             });
-    });
-    router.get('/users/:id/apps', (req, res) => {
-        app.findAllByUserId(req.params.id,
+  });
+  router.get('/users/:id/apps', (req, res) => {
+    app.findAllByUserId(req.params.id,
             (err) => {
-                logger.debug('by userId apps read error:' + err.message + '\n', 2);
-                res.status(500).send(err.message);
+              logger.debug('by userId apps read error:' + err.message + '\n', 2);
+              res.status(500).send(err.message);
             },
             (data) => {
-                logger.debug('by userId apps read:' + JSON.stringify(data) + '\n', 0);
-                res.status(200).json(data);
+              logger.debug('by userId apps read:' + JSON.stringify(data) + '\n', 0);
+              res.status(200).json(data);
             });
-    });
-    router.post('/apps', (req, res) => {
-        app.create(req.body,
+  });
+  router.post('/apps', (req, res) => {
+    app.create(req.body,
             (err) => {
-                logger.debug('Creating app error:' + err.message + '\n', 2);
-                res.status(500).send(err.message);
+              logger.debug('Creating app error:' + err.message + '\n', 2);
+              res.status(500).send(err.message);
             },
             (data) => {
-                logger.debug('app created:' + JSON.stringify(data) + '\n', 0);
-                res.status(201).json(data);
+              logger.debug('app created:' + JSON.stringify(data) + '\n', 0);
+              res.status(201).json(data);
             });
-    });
-    router.put('/apps/:id', (req, res) => {
-        req.body.id = req.params.id;
-        app.update(req.body,
+  });
+  router.put('/apps/:id', (req, res) => {
+    req.body.id = req.params.id;
+    app.update(req.body,
             (err) => {
-                logger.debug('Updating app error:' + err.message + '\n', 2);
-                res.status(500).send(err.message);
+              logger.debug('Updating app error:' + err.message + '\n', 2);
+              res.status(500).send(err.message);
             },
             (data) => {
-                logger.debug('app updated:' + JSON.stringify(data) + '\n', 0);
-                res.status(200).json(data);
+              logger.debug('app updated:' + JSON.stringify(data) + '\n', 0);
+              res.status(200).json(data);
             });
-    });
-    router.delete('/apps/:id', (req, res) => {
-        app.destroy(req.params,
+  });
+  router.delete('/apps/:id', (req, res) => {
+    app.destroy(req.params,
             (err) => {
-                logger.debug('Deleting app error:' + err.message + '\n', 2);
-                res.status(500).send(err);
+              logger.debug('Deleting app error:' + err.message + '\n', 2);
+              res.status(500).send(err);
             },
             (data) => {
-                if (data === 1) {
-                    logger.debug("id: " + req.params.id + " deleted!" + '\n', 0);
-                    res.status(200).send("id: " + req.params.id + " deleted!");
-                } else {
-                    logger.debug("id: " + req.params.id + " not found in database!" + '\n', 0);
-                    res.status(202).send("id: " + req.params.id + " not found in database!");
-                }
-  
+              if (data === 1) {
+                logger.debug('id: ' + req.params.id + ' deleted!' + '\n', 0);
+                res.status(200).send('id: ' + req.params.id + ' deleted!');
+              } else {
+                logger.debug('id: ' + req.params.id + ' not found in database!' + '\n', 0);
+                res.status(202).send('id: ' + req.params.id + ' not found in database!');
+              }
             });
-    });
-    return router;
-}
+  });
+  return router;
+};
