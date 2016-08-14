@@ -5,7 +5,7 @@ exports.findAll = (err, success) => {
     db.app.findAll({ include: [db.user, db.artAsset] }).then(success).catch(err); //{ include: [db.User, db.ArtAsset] }
 };
 
-exports.find = (payload, err, success) => {
+exports.findById = (payload, err, success) => {
     db.app.find({
         where: {
             id:payload.id,
@@ -13,6 +13,14 @@ exports.find = (payload, err, success) => {
         include: [ //include relations, even deeper multilevel
             {all: true, nested:true,}
         ],
+    }).then(success).catch(err);
+};
+exports.findAllByUserId = (payload, err, success) => {
+    db.app.findAll({
+        where: {
+            userId: payload,
+        },
+        include: [db.user, db.artAsset]
     }).then(success).catch(err);
 };
 exports.create = (payload, err, success) => {

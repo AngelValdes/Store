@@ -10,7 +10,7 @@ app.use(bodyParser.json()); // to get json from req body
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', require('./routes')(express)); //initialize routes 
 
-exports.server = app.listen(port, () => console.log('Sever Active on:', port)); // initialize server 
-
+module.exports = app.listen(port, () => console.log('Sever Active on:', port)); // initialize server;
+//exports.server = server;
 
 

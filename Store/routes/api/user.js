@@ -16,7 +16,7 @@ module.exports = (express) => {
             });
     });
     router.get('/users/:id', (req, res) => {
-        user.find(req.params,
+        user.findById(req.params,
             (err) => {
                 logger.debug('by id user read error:' + err.message + '\n', 2);
                 res.status(500).send(err.message);

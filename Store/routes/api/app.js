@@ -16,13 +16,24 @@ module.exports = (express) => {
             });
     });
     router.get('/apps/:id', (req, res) => {
-        app.find(req.params,
+        app.findById(req.params,
             (err) => {
                 logger.debug('by id app read error:' + err.message + '\n', 2);
                 res.status(500).send(err.message);
             },
             (data) => {
                 logger.debug('by id app read:' + JSON.stringify(data) + '\n', 0);
+                res.status(200).json(data);
+            });
+    });
+    router.get('/users/:id/apps', (req, res) => {
+        app.findAllByUserId(req.params.id,
+            (err) => {
+                logger.debug('by userId apps read error:' + err.message + '\n', 2);
+                res.status(500).send(err.message);
+            },
+            (data) => {
+                logger.debug('by userId apps read:' + JSON.stringify(data) + '\n', 0);
                 res.status(200).json(data);
             });
     });

@@ -5,7 +5,7 @@ exports.findAll = (err, success) => {
     db.user.findAll({include: [ db.app ]}).then(success).catch(err);
 };
 
-exports.find = (payload, err, success) => {
+exports.findById = (payload, err, success) => {
     db.user.find({
         where: {
             id:payload.id,
