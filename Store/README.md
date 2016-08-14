@@ -1,4 +1,7 @@
 ﻿# RESTfull Web API Documentation
+### All javascript files compliant with:
+- [AirBnB Javascript Style Guide] (https://github.com/airbnb/javascript)
+- [ESLint] (http://eslint.org/)
 #### Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
 #### Create a .env file with the following values according to your database server:
