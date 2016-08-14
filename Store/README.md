@@ -1,11 +1,15 @@
-﻿# RESTfull Web API Documentation
+﻿# RESTfull Web API in Node JS
 ### All javascript files compliant with:
 - [AirBnB Javascript Style Guide] (https://github.com/airbnb/javascript)
 - [ESLint] (http://eslint.org/)
 
-#### Replace http://localhost:3000 with appropiate hosting location
+### Included testing files written with [Mocha] (https://mochajs.org/)
+
+### No IDE dependencies, you can open in any IDE. In VS, open as web site or make a new project and add these existing files and folders.
+
+#### Note: Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
-#### Create a .env file with the following values according to your database server:
+#### Create a .env file inside root of "store" folder with the following values according to your database server:
 ```
 DB_NAME=store
 DB_USER=root
