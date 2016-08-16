@@ -1,86 +1,59 @@
-// app routes
-const app = require('../../models/app');
-
 module.exports = (express) => {
     const router = express.Router();
+    var apps = [
+         {
+             "id": 1,
+             "title": "Best App Ever",
+             "description": "A fast paced side scrolling shooter",
+             "artAssets": [
+                 { "title": "Splash Screen", "srcLink": "http://i.imgur.com/5e5Ihb6.jpg" },
+                 { "title": "Cut Scene", "srcLink": "http://i.imgur.com/QQ3O6PO.jpg" }
+             ],
+             "releaseDate": "2016-06-15T22:29:20.000Z",
+             "createdAt": "2016-05-15T22:29:20.000Z",
+             "updatedAt": "2016-05-15T22:29:20.000Z",
+             "user": {
+                 "id": 2,
+                 "name": "Joe"
+             }
+         },
+         {
+             "id": 2,
+             "title": "Second Best App Ever",
+             "description": "A fast paced side scrolling shooter",
+             "artAssets": [
+                 { "title": "Splash Screen", "srcLink": "http://i.imgur.com/5e5Ihb6.jpg" },
+                 { "title": "Cut Scene", "srcLink": "http://i.imgur.com/QQ3O6PO.jpg" }
+             ],
+             "releaseDate": "2016-06-15T22:29:20.000Z",
+             "createdAt": "2016-05-15T22:29:20.000Z",
+             "updatedAt": "2016-05-15T22:29:20.000Z",
+             "user": {
+                 "id": 3,
+                 "name": "Maria"
+             }
+         },
+    ];
     // route: select all apps
     router.get('/apps', (req, res) => {
-        app.findAll(
-                (err) => { // if error, log and return error status and message
-                    console.log('All apps read error:' + err.message + '\n');
-                    res.status(500).send(err.message);
-                },
-                (data) => { // if success log and return status and data
-                    console.log('All apps read:' + JSON.stringify(data) + '\n');
-                    res.status(200).json(data);
-                });
+        res.status(200).json(apps);
     });
     // route: select one app by id
     router.get('/apps/:id', (req, res) => {
-        app.findById(req.params,
-                (err) => {
-                    console.log('by id app read error:' + err.message + '\n');
-                    res.status(500).send(err.message);
-                },
-                (data) => {
-                    console.log('by id app read:' + JSON.stringify(data) + '\n');
-                    res.status(200).json(data);
-                });
+        var id = req.params.id; //get id value from route params      
+        var index = -1;
+        for (var i = 0; i < apps.length; i += 1) { //i++ //looking for member with id
+            if (apps[i].id === parseInt(id)) {
+                index = i;
+                break;
+            };
+        }
+        if (index === -1) { //if index still -1, member was not found
+            res.status(404).send([404, null, null]); //return not found
+        } else {
+            res.status(200).json(apps[index]);//return app
+        }
     });
-    // route: select all apps for a user id
-    router.get('/users/:id/apps', (req, res) => {
-        app.findAllByUserId(req.params.id,
-                (err) => {
-                    console.log('by userId apps read error:' + err.message + '\n');
-                    res.status(500).send(err.message);
-                },
-                (data) => {
-                    console.log('by userId apps read:' + JSON.stringify(data) + '\n');
-                    res.status(200).json(data);
-                });
-    });
-    // route: insert new app
-    router.post('/apps', (req, res) => {
-        app.create(req.body,
-                (err) => {
-                    logger.debug('Creating app error:' + err.message + '\n', 2);
-                    res.status(500).send(err.message);
-                },
-                (data) => {
-                    logger.debug('app created:' + JSON.stringify(data) + '\n', 0);
-                    res.status(201).json(data);
-                });
-    });
-    // route: update existing app
-    router.put('/apps/:id', (req, res) => {
-        /* eslint no-param-reassign: 0 */
-        req.body.id = req.params.id; // recommended by instructor
-        app.update(req.body,
-                (err) => {
-                    console.log('Updating app error:' + err.message + '\n');
-                    res.status(500).send(err.message);
-                },
-                (data) => {
-                    console.log('app updated:' + JSON.stringify(data) + '\n');
-                    res.status(200).json(data);
-                });
-    });
-    // route: remove existing app
-    router.delete('/apps/:id', (req, res) => {
-        app.destroy(req.params,
-                (err) => {
-                    console.log('Deleting app error:' + err.message + '\n');
-                    res.status(500).send(err);
-                },
-                (data) => {
-                    if (data === 1) {
-                        console.log('{ response: ' + data + ', message:  id ' + req.params.id + ' deleted! }\n');
-                        res.status(200).send({ response: data, message: 'id ' + req.params.id + ' deleted!' });
-                    } else {
-                        console.log('{ response: ' + data + ', message:  id ' + req.params.id + ' not found in database }\n', 0);
-                        res.status(202).send({ response: data, message: 'id ' + req.params.id + ' not found in database!' });
-                    }
-                });
-    });
+    
     return router;
 };
