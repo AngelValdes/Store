@@ -1,4 +1,4 @@
-global.DEBUG = true; //  define running environment at a global scope
+global.DEBUG = true; //  define running environment at a global scopes
 
 const express = require('express'); // configure web sever
 const bodyParser = require('body-parser');
