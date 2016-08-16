@@ -1,1 +1,24 @@
- 
+{
+  "name": "store",
+  "version": "0.0.0",
+  "description": "Store",
+  "main": "server.js",
+  "author": {
+    "name": "AngelValdes"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "colors": "^1.1.2",
+    "dotenv": "^2.0.0",
+    "eslint": "^3.3.0",
+    "eslint-plugin-react": "^6.1.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "expect": "^1.20.2",
+    "express": "^4.14.0",
+    "faker": "^3.1.0",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.24.0",
+    "supertest": "^2.0.0"
+  }
+}
