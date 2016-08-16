@@ -1,11 +1,7 @@
 ﻿# RESTfull Web API in Node JS
-### All javascript files compliant with:
-- [AirBnB Javascript Style Guide] (https://github.com/airbnb/javascript)
-- [ESLint] (http://eslint.org/)
+### Included testing files
 
-### Included testing files written with [Mocha] (https://mochajs.org/) and [Faker] (https://github.com/FotoVerite/Faker.js)
-
-### No IDE dependencies, you can open in any IDE. In VS, open as web site or make a new nodeJS project and add these existing files and folders.
+### No IDE dependencies, you can open in any IDE.
 
 #### Note: Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
@@ -19,30 +15,7 @@ DB_SCHEMA=mysql
 DB_PORT=3306
 ```
 #### Also make sure you create the database/user/password before running the app. ORM will create the tables and relations automatically in the database.
-#### This api has debug logging functionality, it will create a ./logs/logfile.log with logging information and display messages in the console. Logging and console messages only happen when global.DEBUG = true. this can be set in the server.js file. 
-#### The logfile.log will contain three levels of messages: information, warnings, and errors. It will also log the data being manipulated Example:
-```
-Log file Initialized on Thu Aug 11 2016 17:09:23 GMT-0400 (Eastern Daylight Time)
- - at: 1:59:47 AM information(blue): by id user read:
-{
-	id: 1,
-	name: "maria",
-	apps: 
-		[
-			{
-				id: 1,
-				title: "Best App Ever",
-				description: "A fast paced side scrolling shooter",
-				releaseDate: "2016-06-15T00:00:00.000Z",
-				createdAt: "2016-08-09T18:35:15.000Z",
-				updatedAt: "2016-08-09T18:35:15.000Z",
-				userId: 1
-			},
-			{
-				...
-			}
-		]
-}
+
  ```
 #### When doing PUT and POST do not forget to add in the request header:
  ```
