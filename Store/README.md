@@ -1,4 +1,10 @@
 ﻿# RESTfull Web API in Node JS
+### All javascript files compliant with:
+- [AirBnB Javascript Style Guide] (https://github.com/airbnb/javascript)
+- [ESLint] (http://eslint.org/)
+
+### Included testing files written with [Mocha] (https://mochajs.org/) and [Faker] (https://github.com/FotoVerite/Faker.js)
+
 ### No IDE dependencies, you can open in any IDE. In VS, open as web site or make a new nodeJS project and add these existing files and folders.
 
 #### Note: Replace http://localhost:3000 with appropiate hosting location
