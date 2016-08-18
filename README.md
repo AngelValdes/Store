@@ -48,6 +48,8 @@ Log file Initialized on Thu Aug 11 2016 17:09:23 GMT-0400 (Eastern Daylight Time
  ```
 Content-Type: application/json
  ```
+#### Unit Testing is written to test 100% of code functionality and routes. there are static and dynamic routes unit testing. To test open a console command window at the project scope and type "mocha" and press enter. you should see all unit test run and passing.
+
 #### See below for routes end points. 
 ## Display all apps info including related entities
 - GET Route: http://localhost:3000/api/v1/apps
