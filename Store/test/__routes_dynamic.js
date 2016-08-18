@@ -15,7 +15,7 @@ describe('dynamic Routes', () => {
     afterEach(() => {
         server.close();
     });
-    const tests = [
+    const tests = [ //routes to test dinamically... it can be expanded with more routes.
         {
             resource: "users",
             name: 'userGetAll',
@@ -89,9 +89,9 @@ describe('dynamic Routes', () => {
                         })
                         .end(done);
                     break;
-                case 'PUT':
+                case 'PUT': //to be implemented.
                     break;
-                case 'DELETE':
+                case 'DELETE': //to be implemented.
                     break;
             }
         });
