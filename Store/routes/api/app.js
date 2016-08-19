@@ -1,6 +1,6 @@
 // app routes
 const app = require('../../models/app');
-const logger = require('../../services/logger');
+const logger = require("simple-logger-pkg");
 
 module.exports = (express) => {
   const router = express.Router();
