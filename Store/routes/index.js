@@ -12,7 +12,7 @@ module.exports = (express) => {
   });
   // add API routes with prefix
   router.use('/api/v1', require('./api/user')(express));
-  //router.use('/api/v1', require('./api/app')(express));
+  router.use('/api/v1', require('./api/app')(express));
 
   return router;
 };
