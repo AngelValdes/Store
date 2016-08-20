@@ -11,7 +11,7 @@ module.exports = (express) => {
     res.status(200).json({ healthy: true });
   });
   // add API routes with prefix
-  router.use('/api/v1', require('./Store/api/user')(express));
+  router.use('/api/v1', require('./api/user')(express));
   //router.use('/api/v1', require('./api/app')(express));
 
   return router;
