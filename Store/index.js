@@ -11,7 +11,10 @@ app.use(bodyParser.json()); // to get json from req body
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', require('./routes')(express)); // initialize routes
 
-const logger = require("simple-logger-pkg");
+//const logger = require("simple-logger-pkg");
 
-module.exports = app.listen(port, () => logger.debug('Sever Active on:' + port, 0)); // initialize server, exception to rule.
+module.exports = app.listen(port, () => {
+    //logger.debug('Sever Active on:' + port, 0);
+    console.log("server active");
+}); // initialize server, exception to rule.
 
