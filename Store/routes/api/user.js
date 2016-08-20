@@ -1,5 +1,5 @@
 // user routes
-//const user = require('../../models/user');
+const user = require('../../models/user');
 const logger = require("simple-logger-pkg");
 
 module.exports = (express) => {
