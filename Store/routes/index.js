@@ -2,10 +2,10 @@ module.exports = (express) => {
   const router = express.Router();
   // main website routes
   router.get('/', (req, res) => {
-    res.status(200).send('Website running...');
+    res.status(200).send('Website running - production - ...');
   });
   router.get('/api', (req, res) => {
-    res.status(200).send('API running...');
+    res.status(200).send('API running - production - ...');
   });
   router.get('/status', (req, res) => {
     res.status(200).json({ healthy: true });
