@@ -1,8 +1,8 @@
 // User Repository
-//const db = require('./db');
+const db = require('./db');
 // getAll including relations
 exports.findAll = (err, success) => {
-  //db.user.findAll({ include: [db.app] }).then(success).catch(err);
+  db.user.findAll({ include: [db.app] }).then(success).catch(err);
 };
 // getById including relations
 //exports.findById = (payload, err, success) => {
