@@ -4,8 +4,8 @@
   "description": "Store",
   "main": "index.js",
   "engines": {
-    "node": "^6.3.1",
-    "npm": "^3.10.5"
+    "node": "6.3.1",
+    "npm": "3.10.5"
   },
   "scripts": {
     "start": "node index.js",
