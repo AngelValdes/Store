@@ -2,13 +2,13 @@
   "name": "store",
   "version": "0.0.0",
   "description": "Store",
-  "main": "index.js",
+  "main": "Store/index.js",
   "engines": {
     "node": "6.4.0",
     "npm": "3.10.6"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node Store/index.js",
     "test": "mocha" 
   },
   "author": {
