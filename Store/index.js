@@ -1,5 +1,5 @@
 global.DEBUG = true; //  define running environment at a global scope
-global.LOGPATH = './Store/logs/logfile.log'; // location of log files
+global.LOGPATH = './logs/logfile.log'; // location of log files
 
 const express = require('express'); // configure web sever
 const bodyParser = require('body-parser');
@@ -9,7 +9,7 @@ const app = express();  // instantiate application
 
 app.use(bodyParser.json()); // to get json from req body
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/', require('./Store/routes')(express)); // initialize routes
+app.use('/', require('./routes')(express)); // initialize routes
 
 const logger = require("simple-logger-pkg");
 
