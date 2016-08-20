@@ -2,7 +2,7 @@
   "name": "store",
   "version": "0.0.0",
   "description": "Store",
-  "main": "server.js",
+  "main": "index.js",
   "engines": {
     "node": "^6.3.1",
     "npm": "^3.10.5"
