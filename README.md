@@ -16,7 +16,7 @@ DB_USER=root
 DB_PASS=
 DB_HOST=localhost
 DB_SCHEMA=mysql
-DB_PORT=3306
+DB_PORT=3306 
 ```
 #### Also make sure you create the database/user/password before running the app. ORM will create the tables and relations automatically in the database.
 ## Workflow 
