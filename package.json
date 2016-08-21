@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node Store/index.js",
-    "test": "mocha"
+    "test": "mocha store/test/"
   },
   "author": {
     "name": "AngelValdes"
