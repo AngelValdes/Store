@@ -28,7 +28,7 @@ DB_PORT=3306
 #### To deploy the app to staging and production:
 1. After checking in or merging into release-staging branch, all test will run automatically using codeship
 2. If all test pass, Heroku will be notified and publishing to staging will happen automatically.
-3. After testing staging, publish to production manually by going into Heroku and clicking on Promote to production button in the staging app. Note: any changes and checked into staing will kick the test/deployment process
+3. After testing staging, publish to production manually by going into Heroku and clicking on Promote to production button in the staging app. 
 #### Also make sure you create the database/user/password before running the app. ORM will create the tables and relations automatically in the database.  
 #### When doing PUT and POST do not forget to add in the request header:
  ```
