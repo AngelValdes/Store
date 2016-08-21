@@ -16,7 +16,7 @@ describe('User Routes', () => {
 
     // Test Get all, for Multiple Users
   it('GET /api/v1/users returns multiple users', (done) => {
-      request(server)
+    request(server)
         .get('/api/v1/users')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
@@ -66,46 +66,46 @@ describe('User Routes', () => {
   // Test insert new
   it('POST /api/v1/users creates new user', (done) => {
       // Generate a fake User with a random name
-      const fakeUser = { name: faker.name.firstName() };
-      request(server)
+    const fakeUser = { name: faker.name.firstName() };
+    request(server)
           .post('/api/v1/users')
           .set('Accept', 'application/json')
           .send(fakeUser)
           .expect('Content-Type', /json/)
           .expect((res) => {
-              const user = res.body;
+            const user = res.body;
               // Save user to test on in later tests
-              this.tempUser = user;
-              chai.expect(user.name).to.be.equal(fakeUser.name);
+            this.tempUser = user;
+            chai.expect(user.name).to.be.equal(fakeUser.name);
           })
           .end(done);
   });
   // Test update existing
   it('PUT /api/v1/users/:id updates existing user', (done) => {
       // get previously created user
-      const updateUser = this.tempUser;
-      updateUser.name = faker.name.firstName();
-      request(server)
+    const updateUser = this.tempUser;
+    updateUser.name = faker.name.firstName();
+    request(server)
           .put('/api/v1/users/' + updateUser.id)
           .set('Accept', 'application/json')
           .send(updateUser)
           .expect('Content-Type', /json/)
           .expect((res) => {
-              const user = res.body;
+            const user = res.body;
               // Save user to test on in later tests
-              this.tempUser = user;
-              chai.expect(user.name).to.be.equal(updateUser.name);
+            this.tempUser = user;
+            chai.expect(user.name).to.be.equal(updateUser.name);
           })
           .end(done);
   });
   // Test update existing
   it('DELETE /api/v1/users/:id deletes existing user', (done) => {
-      request(server)
+    request(server)
           .delete('/api/v1/users/' + this.tempUser.id)
           .expect('Content-Type', /json/)
           .expect((data) => {
-              chai.expect(data.res.statusCode).to.be.equal(200);
-              chai.expect(data.res.body.response).to.be.equal(1);
+            chai.expect(data.res.statusCode).to.be.equal(200);
+            chai.expect(data.res.body.response).to.be.equal(1);
           })
           .end(done);
   });

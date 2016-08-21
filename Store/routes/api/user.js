@@ -1,12 +1,12 @@
 // user routes
 const user = require('../../models/user');
-const logger = require("simple-logger-pkg");
+const logger = require('simple-logger-pkg');
 
 module.exports = (express) => {
   const router = express.Router();
   // route: select all users
   router.get('/users', (req, res) => {
-      //res.status(200).json([{ "name": "juan" }, { "name": "maria" }]);
+      // res.status(200).json([{ "name": "juan" }, { "name": "maria" }]);
     user.findAll(
             (err) => { // if error, log and return error status and message
               logger.debug('All users read error:' + err.message + '\n', 2);
@@ -63,13 +63,17 @@ module.exports = (express) => {
               res.status(500).send(err);
             },
             (data) => {
-                if (data === 1) {
-                    logger.debug('{ response: ' + data + ', message:  id ' + req.params.id + ' deleted! }\n', 0);
-                res.status(200).send({ response: data, message: 'id ' + req.params.id + ' deleted!' });
-                } else {
-                    logger.debug('{ response: ' + data + ', message:  id ' + req.params.id + ' not found in database }\n', 0);
-                res.status(202).send({ response: data, message: 'id ' + req.params.id + ' not found in database!' });
-                }
+              if (data === 1) {
+                logger.debug('{ response: ' + data + ', message:  id ' +
+                req.params.id + ' deleted! }\n', 0);
+                res.status(200).send({ response: data,
+                  message: 'id ' + req.params.id + ' deleted!' });
+              } else {
+                logger.debug('{ response: ' + data + ', message:  id ' +
+                req.params.id + ' not found in database }\n', 0);
+                res.status(202).send({ response: data,
+                  message: 'id ' + req.params.id + ' not found in database!' });
+              }
             });
   });
   return router;
