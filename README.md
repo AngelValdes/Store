@@ -24,12 +24,14 @@ DB_PORT=3306
 1. Create a new branch, add your code and check in
 2. Merge into master
 3. Tag it and merge it to the release-staging branch  
+
 ## Deployment
 #### To deploy the app to staging and production:
 1. After checking in or merging into release-staging branch, all test will run automatically using codeship
 2. If all test pass, Heroku will be notified and publishing to staging will happen automatically.
 3. After testing staging, publish to production manually by going into Heroku and clicking on Promote to production button in the staging app. 
 #### Also make sure you create the database/user/password before running the app. ORM will create the tables and relations automatically in the database.  
+
 #### When doing PUT and POST do not forget to add in the request header:
  ```
 Content-Type: application/json
