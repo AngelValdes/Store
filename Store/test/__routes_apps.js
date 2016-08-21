@@ -8,7 +8,7 @@ describe('App Routes', () => {
   var server;
   /* eslint no-undef: 0 */
   beforeEach(() => {
-    server = require('../server');
+    server = require('../index');
   });
   afterEach(() => {
     server.close();

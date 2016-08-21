@@ -23,7 +23,7 @@ describe('test example', () => {
 describe('API', () => {
   /* eslint no-undef: 0 */
   beforeEach(() => { // reconfigure server before each test to isolate them
-    server = require('../server');
+    server = require('../index');
   });
   afterEach(() => {
     server.close();
@@ -33,7 +33,7 @@ describe('API', () => {
             .get('/')
             .set('Accept', 'text/html')
             .expect('Content-Type', /text/)
-            .expect(200, 'Website running...', done);
+            .expect(200, done);
   });
   it('/status route should return healthy: true', (done) => {
     request(server)

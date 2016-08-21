@@ -10,7 +10,7 @@ describe('dynamic Routes', () => {
     var tempData;
     /* eslint no-undef: 0 */
     beforeEach(() => { // reconfigure server before each test to isolate them
-        server = require('../server');
+        server = require('../index');
     });
     afterEach(() => {
         server.close();
