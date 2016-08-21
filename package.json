@@ -1,15 +1,15 @@
 {
   "name": "store",
-  "version": "0.0.0",
-  "description": "Store",
+  "version": "1.0.1",
+  "description": "Store", 
   "main": "Store/index.js",
   "engines": {
-    "node": "6.4.0",
-    "npm": "3.10.6"
+    "node": "6.3.1",
+    "npm": "3.10.5"
   },
   "scripts": {
     "start": "node Store/index.js",
-    "test": "mocha" 
+    "test": "mocha Store/test/__api.js"
   },
   "author": {
     "name": "AngelValdes"
@@ -21,6 +21,7 @@
     "dotenv": "^2.0.0",
     "eslint": "^3.3.0",
     "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.1.0",
     "expect": "^1.20.2",
     "express": "^4.14.0",

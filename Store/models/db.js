@@ -4,7 +4,7 @@
 
 const Sequelize = require('sequelize');
 require('dotenv').config();
-const logger = require("simple-logger-pkg");
+// const logger = require("simple-logger-pkg");
 // configure connection to database
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
@@ -14,28 +14,28 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   pool: {
     max: 5,
     min: 0,
-    idle: 10000
+    idle: 10000,
   },
   define: {
-    timestamps: false // true by default
-  }
+    timestamps: false, // true by default
+  },
 });
 
 // ORM Entities Models and UnitOfWork
 const user = sequelize.define('user', { // define user model
-  name: Sequelize.STRING
+  name: Sequelize.STRING,
 });
 const app = sequelize.define('app', { // define app model
   title: Sequelize.STRING,
   description: Sequelize.TEXT,
-  releaseDate: Sequelize.DATE
+  releaseDate: Sequelize.DATE,
 },
   {
-    timestamps: true
+    timestamps: true,
   });
 const artAsset = sequelize.define('artAsset', { // define artAsset model
   title: Sequelize.STRING,
-  srcLink: Sequelize.STRING
+  srcLink: Sequelize.STRING,
 });
 
 // Entities relationships
@@ -45,10 +45,10 @@ app.hasMany(artAsset, { foreignKey: 'appId' });
 
 sequelize.sync()
     .then(() => {
-      logger.debug('All models are synchronized\n', 0);
+      // logger.debug('All models are synchronized\n', 0);
     })
-    .catch((error) => {
-      logger.debug('Model synchronization error: ' + error + '\n', 2);
+    .catch(() => {
+      // logger.debug('Model synchronization error: ' + error + '\n', 2);
     });
 
 exports.sequelize = sequelize;

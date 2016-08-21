@@ -1,6 +1,5 @@
 const expect = require('chai').expect;
 const faker = require('faker');
-
 const App = require('../models/app');
 
 describe('App Model', () => {
@@ -20,8 +19,8 @@ describe('App Model', () => {
 
     // Add a App
   it('Adds a new App', (done) => {
-        // Generate a fake App with a random title      
-      const fakeApp = { title: faker.name.firstName() }; // , description: faker.Loren.sentence(), releaseDate: faker.Date.future(), userId: 1
+        // Generate a fake App with a random title
+    const fakeApp = { title: faker.name.firstName() };
 
         // Call app model for adding
     App.create(fakeApp,
