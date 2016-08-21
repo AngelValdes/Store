@@ -247,7 +247,6 @@ ModelManifest.xml
 # User custom
 node_modules
 .DS_Store
-.env
 .env.json
 .vscode/
 typings/
