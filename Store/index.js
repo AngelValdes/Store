@@ -1,5 +1,6 @@
 global.DEBUG = true; //  define running environment at a global scope
 global.LOGPATH = './logs/logfile.log'; // location of log files
+global.package = require('../package.json');
 
 const express = require('express'); // configure web sever
 const bodyParser = require('body-parser');
