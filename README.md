@@ -26,7 +26,12 @@ DB_PORT=3306
 3. Tag it and merge it to the release-staging branch  
 
 ## Deployment
-#### To deploy the app to staging and production:
+#### To deploy the app to staging and production v1.7:
+1. Check in the code and sync to master branch
+2. On the client console and the project branch location, run "git push productionServer", if this remote address is not configure, use git remote add productionServer ssh://root@159.203.106.194/var/repos/apextion.git
+3. On server console run pm2 restart index (until we can figure out how to make it happen using git hooks)
+
+#### To deploy the app to staging and production v1.8:
 1. After checking in or merging into release-staging branch, all test will run automatically using codeship
 2. If all test pass, Heroku will be notified and publishing to staging will happen automatically.
 3. After testing staging, publish to production manually by going into Heroku and clicking on Promote to production button in the staging app. 
