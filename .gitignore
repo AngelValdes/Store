@@ -250,6 +250,6 @@ node_modules
 .env.json
 .vscode/
 typings/
-Store.njsproj
-Store.sln
+*.njsproj
+*.sln
 MyNotes.txt
