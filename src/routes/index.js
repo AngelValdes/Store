@@ -6,7 +6,7 @@ module.exports = (express) => {
     + process.env.ENV_NAME + ' version ' + global.package.version);
   });
   router.get('/api', (req, res) => {
-      res.status(200).send('API running...' + global.package.name + ' running...'
+    res.status(200).send('API running...' + global.package.name + ' running...'
           + process.env.ENV_NAME + ' version ' + global.package.version);
   });
   router.get('/status', (req, res) => {
