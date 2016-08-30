@@ -7,6 +7,11 @@
 
 ### No IDE dependencies, you can open in any IDE. In VS, open as web site or make a new nodeJS project and add these existing files and folders.
 
+### Gulp version increaser automation, at terminal or console run: (This will increase package.json version) 
+### where the --option value can be any of these ("Major", "Minor", "Patch")
+```
+gulp versionUp --option "Patch"
+```
 #### Note: Replace http://localhost:3000 with appropiate hosting location
 ## Usage 
 #### Create a .env file inside root of "store" folder with the following values according to your database server:
