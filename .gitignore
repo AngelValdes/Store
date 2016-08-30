@@ -248,7 +248,6 @@ ModelManifest.xml
 node_modules
 .DS_Store
 .env.json
-.env
 .vscode/
 typings/
 *.njsproj
